@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[395],{4008:e=>{e.exports=JSON.parse('{"label":"Relay","permalink":"/blog/tags/relay","allTagsPath":"/blog/tags","count":3,"unlisted":false}')}}]);

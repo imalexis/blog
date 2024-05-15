@@ -1,0 +1,74 @@
+---
+slug: relay-mutation
+title: Relay - Mutation
+
+tags: [graphql, Relay]
+---
+
+ general steps for creating a new object using Relay Mutations:
+
+ <!-- truncate -->
+
+### 1. Define a GraphQL Mutation
+   Create a GraphQL mutation that represents the action of creating a new object. This mutation should include input fields representing the data needed to create the object.
+
+```js
+   // Example GraphQL mutation
+
+const mutation = graphql`
+    mutation ObjectMutation($input: CreateObjectInput!) {
+    createObject(input: $input) {
+    object {
+      id
+      name
+      // other fields
+    }
+  }
+}
+` 
+```
+
+### 2. Create a Relay Mutation
+creare the commit method
+```js
+const [commit] = useMutation<CreateObjectMutation>(mutation);
+```
+CreateObjectMutation: the type of mutation 
+
+mutation: the definition of mutation 
+<br/>
+### 3. invoke commit
+the new object to be create should be place in the "input" property of "variable". "variable" is a property of the big Object we commit.
+
+```js
+<Button
+        type="primary"
+        onClick={() =>
+          commit({
+            variables: { input: { createdBy: 1, name: title } },
+            onCompleted: (response, errors) => {
+              navigate("/admin/forms");
+            },
+          })
+        }
+/>
+```
+
+:::tip
+
+When developing a React app with Relay, you often use the babel-plugin-relay/macro package to enable the graphql template literal tag for your GraphQL queries. This allows you to embed GraphQL queries directly into your JavaScript or TypeScript files.
+
+In Relay applications, when using the babel-plugin-relay/macro, you import the graphql template tag from the babel-plugin-relay/macro package instead of the generic graphql package. This is because the graphql template tag provided by babel-plugin-relay/macro is a special version tailored for Relay's use and is capable of performing ahead-of-time (AOT) compilation.
+
+When you use `import { graphql } from "babel-plugin-relay/macro";`, the Babel plugin processes the GraphQL queries at build time, generating optimized artifacts that are used by Relay to make more efficient GraphQL requests.
+
+By using the babel-plugin-relay/macro, you get the benefits of AOT compilation, which includes:
+
+Faster Runtime: The Relay compiler processes the queries at build time, so the runtime environment doesn't need to perform complex parsing and transformations on GraphQL queries.
+
+Smaller Bundle Sizes: AOT compilation allows the Relay compiler to generate optimized artifacts, resulting in smaller bundle sizes for your application.
+
+Static Validation: Queries are statically validated during the build process, catching errors early in development rather than at runtime.
+
+Using the generic graphql package wouldn't provide these benefits, as it doesn't have the Relay-specific optimizations implemented by the babel-plugin-relay/macro. Therefore, when working with Relay, it's recommended to import graphql from babel-plugin-relay/macro for an improved development and runtime experience.
+:::

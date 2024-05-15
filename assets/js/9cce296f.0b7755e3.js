@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[2175],{769:e=>{e.exports=JSON.parse('{"label":"graphql","permalink":"/blog/tags/graphql","allTagsPath":"/blog/tags","count":2,"unlisted":false}')}}]);

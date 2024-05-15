@@ -1,0 +1,47 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+---
+slug: heap-application
+title: Applications of Heap
+tags: [data structure, heap]
+---
+
+leetcode natively supports JS PQs, including a Min one.
+
+[github datastructures - priority queue](https://github.com/datastructures-js/priority-queue)
+
+[github leetcode - environment for the programming languages](https://support.leetcode.com/hc/en-us/articles/360011833974-What-are-the-environments-for-the-programming-languages-)
+
+
+
+<Tabs>
+    <TabItem value="The Top K Problem" label="The Top K Problem" default>
+        Use the Heap data structure to obtain Top K’s largest or smallest elements.
+
+        Solution of the Top K largest elements:
+        1. Construct a Max Heap.
+        2. Add all elements into the Max Heap.
+        3. Traversing and deleting the top element, and store the value into the result arry T.
+        4. Repeat step 3 until we have removed the K largest elements.
+
+        Solution of the Top K smalllest elements
+        1. Construct a Min Heap
+        2. Add all elements into the Min Heap
+        3. Traversing and deleing the top element, and store the value into the result array T.
+        4. Repeat step 3 until we have removed the K smallest elements.
+
+        Time Complexity: O(KlogN + N)
+        Space complexity: O(N)
+    </TabItem>
+
+    <TabItem value="--" label="--" default>
+        hello orange
+    </TabItem>
+
+</Tabs>
+
+
+
+
+ 
